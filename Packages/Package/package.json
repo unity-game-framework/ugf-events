@@ -1,20 +1,20 @@
 {
-  "name": "com.ugf.package.name",
-  "displayName": "UGF.Package.Name",
+  "name": "com.ugf.events",
+  "displayName": "UGF.Events",
   "version": "0.0.0-preview",
   "unity": "2020.2",
   "apiCompatibility": ".NET Standard 2.0",
-  "description": "No description.",
+  "description": "Events system implementation.",
   "author": {
     "name": "Unity Game Framework",
     "url": "https://github.com/unity-game-framework"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git://github.com/unity-game-framework/ugf-events.git"
   },
-  "changelogUrl": "",
-  "licensesUrl": "",
+  "changelogUrl": "https://github.com/unity-game-framework/ugf-events/blob/main/changelog.md",
+  "licensesUrl": "https://github.com/unity-game-framework/ugf-events/blob/main/license",
   "publishConfig": {
     "registry": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
   },
