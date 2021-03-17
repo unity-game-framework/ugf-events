@@ -1,0 +1,16 @@
+{
+    "name": "UGF.Events.Runtime.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f25d3900f4c68b34291d01e7c726f004"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
