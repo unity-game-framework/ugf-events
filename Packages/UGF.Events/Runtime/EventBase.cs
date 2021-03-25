@@ -4,6 +4,8 @@ namespace UGF.Events.Runtime
 {
     public abstract class EventBase : IEvent
     {
+        public abstract int Count { get; }
+
         public void Add(EventHandler handler)
         {
             if (handler == null) throw new ArgumentNullException(nameof(handler));
@@ -25,8 +27,14 @@ namespace UGF.Events.Runtime
             OnInvoke(arguments);
         }
 
+        public void Clear()
+        {
+            OnClear();
+        }
+
         protected abstract void OnAdd(EventHandler handler);
         protected abstract bool OnRemove(EventHandler handler);
         protected abstract void OnInvoke(object arguments);
+        protected abstract void OnClear();
     }
 }
