@@ -4,8 +4,8 @@ UGF.Events
 
 ## Info
 
-- **Version**: `0.1.0-preview`
-- **Unity**: `2020.2`
+- **Version**: `1.0.0-preview`
+- **Unity**: `2021.1`
 - **API Compatibility Level**: `.NET Standard 2.0`
 
 ### Dependencies
