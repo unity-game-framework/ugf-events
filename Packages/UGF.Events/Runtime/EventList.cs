@@ -1,44 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace UGF.Events.Runtime
 {
-    public class EventList<TArguments> : EventCollection<TArguments>
+    public class EventList : EventCollection<List<EventHandler>>
     {
-        private readonly List<Delegate> m_handlers;
-        private readonly List<Delegate> m_invoke = new List<Delegate>();
+        private readonly List<EventHandler> m_invoke = new List<EventHandler>();
 
-        public EventList() : base(new List<Delegate>())
+        public EventList(int capacity = 4) : this(new List<EventHandler>(capacity))
         {
-            m_handlers = (List<Delegate>)Handlers;
         }
 
-        protected override void OnInvoke(TArguments arguments)
+        public EventList(List<EventHandler> collection) : base(collection)
         {
-            foreach (Delegate handler in m_handlers)
+        }
+
+        protected override void OnInvoke()
+        {
+            for (int i = 0; i < Collection.Count; i++)
             {
-                m_invoke.Add(handler);
+                m_invoke.Add(Collection[i]);
             }
 
-            object argumentsBoxed = null;
-
-            foreach (Delegate handler in m_invoke)
+            for (int i = 0; i < m_invoke.Count; i++)
             {
-                switch (handler)
-                {
-                    case EventHandler handlerObject:
-                    {
-                        argumentsBoxed ??= arguments;
-
-                        handlerObject(argumentsBoxed);
-                        break;
-                    }
-                    case EventHandler<TArguments> handlerTyped:
-                    {
-                        handlerTyped(arguments);
-                        break;
-                    }
-                }
+                m_invoke[i].Invoke();
             }
 
             m_invoke.Clear();

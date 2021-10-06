@@ -3,42 +3,28 @@ using System.Collections.Generic;
 
 namespace UGF.Events.Runtime
 {
-    public class EventSet<TArguments> : EventCollection<TArguments>
+    public class EventSet : EventCollection<HashSet<EventHandler>>
     {
-        private readonly HashSet<Delegate> m_handlers;
-        private readonly HashSet<Delegate> m_invoke = new HashSet<Delegate>();
+        private readonly HashSet<EventHandler> m_invoke = new HashSet<EventHandler>();
 
-        public EventSet() : base(new HashSet<Delegate>())
+        public EventSet() : this(new HashSet<EventHandler>())
         {
-            m_handlers = (HashSet<Delegate>)Handlers;
         }
 
-        protected override void OnInvoke(TArguments arguments)
+        public EventSet(HashSet<EventHandler> collection) : base(collection)
         {
-            foreach (Delegate handler in m_handlers)
+        }
+
+        protected override void OnInvoke()
+        {
+            foreach (EventHandler handler in Collection)
             {
                 m_invoke.Add(handler);
             }
 
-            object argumentsBoxed = null;
-
-            foreach (Delegate handler in m_invoke)
+            foreach (EventHandler handler in m_invoke)
             {
-                switch (handler)
-                {
-                    case EventHandler handlerObject:
-                    {
-                        argumentsBoxed ??= arguments;
-
-                        handlerObject(argumentsBoxed);
-                        break;
-                    }
-                    case EventHandler<TArguments> handlerTyped:
-                    {
-                        handlerTyped(arguments);
-                        break;
-                    }
-                }
+                handler.Invoke();
             }
 
             m_invoke.Clear();
