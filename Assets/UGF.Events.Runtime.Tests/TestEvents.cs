@@ -19,7 +19,7 @@ namespace UGF.Events.Runtime.Tests
         {
             var target = new Target();
             var event0 = new EventSet<(int first, float second)>();
-            EventHandler<(int first, float second)> handler = target.OnHandle;
+            EventFunctionHandler<(int first, float second)> handler = target.OnHandle;
 
             event0.Add(handler);
             event0.Invoke((10, 10.5F));

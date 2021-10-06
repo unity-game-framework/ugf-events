@@ -4,14 +4,14 @@ namespace UGF.Events.Runtime
 {
     public abstract class Event<TArguments> : EventDynamic, IEvent<TArguments>
     {
-        public void Add(EventHandler<TArguments> handler)
+        public void Add(EventFunctionHandler<TArguments> handler)
         {
             if (handler == null) throw new ArgumentNullException(nameof(handler));
 
             OnAdd(handler);
         }
 
-        public bool Remove(EventHandler<TArguments> handler)
+        public bool Remove(EventFunctionHandler<TArguments> handler)
         {
             if (handler == null) throw new ArgumentNullException(nameof(handler));
 
@@ -23,8 +23,8 @@ namespace UGF.Events.Runtime
             OnInvoke(arguments);
         }
 
-        protected abstract void OnAdd(EventHandler<TArguments> handler);
-        protected abstract bool OnRemove(EventHandler<TArguments> handler);
+        protected abstract void OnAdd(EventFunctionHandler<TArguments> handler);
+        protected abstract bool OnRemove(EventFunctionHandler<TArguments> handler);
         protected abstract void OnInvoke(TArguments arguments);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UGF.Events.Runtime
 {
-    public abstract class EventCollection<TCollection> : Event where TCollection : ICollection<EventHandler>
+    public abstract class EventCollection<TCollection> : Event where TCollection : ICollection<EventFunctionHandler>
     {
         protected TCollection Collection { get; }
 
@@ -14,20 +14,20 @@ namespace UGF.Events.Runtime
 
         protected override void OnAdd(Delegate handler)
         {
-            OnAdd((EventHandler)handler);
+            OnAdd((EventFunctionHandler)handler);
         }
 
         protected override bool OnRemove(Delegate handler)
         {
-            return OnRemove((EventHandler)handler);
+            return OnRemove((EventFunctionHandler)handler);
         }
 
-        protected override void OnAdd(EventHandler handler)
+        protected override void OnAdd(EventFunctionHandler handler)
         {
             Collection.Add(handler);
         }
 
-        protected override bool OnRemove(EventHandler handler)
+        protected override bool OnRemove(EventFunctionHandler handler)
         {
             return Collection.Remove(handler);
         }

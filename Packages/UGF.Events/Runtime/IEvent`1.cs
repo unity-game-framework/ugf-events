@@ -2,8 +2,8 @@
 {
     public interface IEvent<TArguments> : IEventDynamic
     {
-        void Add(EventHandler<TArguments> handler);
-        bool Remove(EventHandler<TArguments> handler);
+        void Add(EventFunctionHandler<TArguments> handler);
+        bool Remove(EventFunctionHandler<TArguments> handler);
         void Invoke(TArguments arguments);
     }
 }
