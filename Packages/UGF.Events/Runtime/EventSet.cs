@@ -3,26 +3,26 @@ using System.Collections.Generic;
 
 namespace UGF.Events.Runtime
 {
-    public class EventSet : EventCollection<HashSet<EventHandler>>
+    public class EventSet : EventCollection<HashSet<EventFunctionHandler>>
     {
-        private readonly HashSet<EventHandler> m_invoke = new HashSet<EventHandler>();
+        private readonly HashSet<EventFunctionHandler> m_invoke = new HashSet<EventFunctionHandler>();
 
-        public EventSet() : this(new HashSet<EventHandler>())
+        public EventSet() : this(new HashSet<EventFunctionHandler>())
         {
         }
 
-        public EventSet(HashSet<EventHandler> collection) : base(collection)
+        public EventSet(HashSet<EventFunctionHandler> collection) : base(collection)
         {
         }
 
         protected override void OnInvoke()
         {
-            foreach (EventHandler handler in Collection)
+            foreach (EventFunctionHandler handler in Collection)
             {
                 m_invoke.Add(handler);
             }
 
-            foreach (EventHandler handler in m_invoke)
+            foreach (EventFunctionHandler handler in m_invoke)
             {
                 handler.Invoke();
             }

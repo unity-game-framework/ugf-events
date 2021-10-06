@@ -2,26 +2,26 @@
 
 namespace UGF.Events.Runtime
 {
-    public class EventSet<TArguments> : EventCollection<HashSet<EventHandler<TArguments>>, TArguments>
+    public class EventSet<TArguments> : EventCollection<HashSet<EventFunctionHandler<TArguments>>, TArguments>
     {
-        private readonly HashSet<EventHandler<TArguments>> m_invoke = new HashSet<EventHandler<TArguments>>();
+        private readonly HashSet<EventFunctionHandler<TArguments>> m_invoke = new HashSet<EventFunctionHandler<TArguments>>();
 
-        public EventSet() : this(new HashSet<EventHandler<TArguments>>())
+        public EventSet() : this(new HashSet<EventFunctionHandler<TArguments>>())
         {
         }
 
-        public EventSet(HashSet<EventHandler<TArguments>> collection) : base(collection)
+        public EventSet(HashSet<EventFunctionHandler<TArguments>> collection) : base(collection)
         {
         }
 
         protected override void OnInvoke(TArguments arguments)
         {
-            foreach (EventHandler<TArguments> handler in Collection)
+            foreach (EventFunctionHandler<TArguments> handler in Collection)
             {
                 m_invoke.Add(handler);
             }
 
-            foreach (EventHandler<TArguments> handler in m_invoke)
+            foreach (EventFunctionHandler<TArguments> handler in m_invoke)
             {
                 handler.Invoke(arguments);
             }

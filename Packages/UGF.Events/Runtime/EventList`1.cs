@@ -2,15 +2,15 @@
 
 namespace UGF.Events.Runtime
 {
-    public class EventList<TArguments> : EventCollection<List<EventHandler<TArguments>>, TArguments>
+    public class EventList<TArguments> : EventCollection<List<EventFunctionHandler<TArguments>>, TArguments>
     {
-        private readonly List<EventHandler<TArguments>> m_invoke = new List<EventHandler<TArguments>>();
+        private readonly List<EventFunctionHandler<TArguments>> m_invoke = new List<EventFunctionHandler<TArguments>>();
 
-        public EventList(int capacity = 4) : this(new List<EventHandler<TArguments>>(capacity))
+        public EventList(int capacity = 4) : this(new List<EventFunctionHandler<TArguments>>(capacity))
         {
         }
 
-        public EventList(List<EventHandler<TArguments>> collection) : base(collection)
+        public EventList(List<EventFunctionHandler<TArguments>> collection) : base(collection)
         {
         }
 
