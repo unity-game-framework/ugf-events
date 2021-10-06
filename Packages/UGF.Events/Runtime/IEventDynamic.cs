@@ -6,5 +6,6 @@ namespace UGF.Events.Runtime
     {
         void Add(Delegate handler);
         bool Remove(Delegate handler);
+        void Invoke(object arguments);
     }
 }
