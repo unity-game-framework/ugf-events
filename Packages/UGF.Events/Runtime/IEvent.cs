@@ -4,6 +4,5 @@
     {
         void Add(EventFunctionHandler handler);
         bool Remove(EventFunctionHandler handler);
-        void Invoke();
     }
 }

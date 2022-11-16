@@ -1,9 +1,8 @@
 ﻿namespace UGF.Events.Runtime
 {
-    public interface IEvent<TArguments> : IEventDynamic
+    public interface IEvent<out TArguments> : IEventDynamic
     {
         void Add(EventFunctionHandler<TArguments> handler);
         bool Remove(EventFunctionHandler<TArguments> handler);
-        void Invoke(TArguments arguments);
     }
 }
