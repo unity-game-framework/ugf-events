@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace UGF.Events.Runtime
 {
     public class EventSet : EventCollection<HashSet<EventFunctionHandler>>
     {
-        private readonly HashSet<EventFunctionHandler> m_invoke = new HashSet<EventFunctionHandler>();
+        private readonly List<EventFunctionHandler> m_invoke;
 
-        public EventSet() : this(new HashSet<EventFunctionHandler>())
+        public EventSet(int capacity = 4) : this(new HashSet<EventFunctionHandler>(capacity))
         {
+            m_invoke = new List<EventFunctionHandler>(capacity);
         }
 
         public EventSet(HashSet<EventFunctionHandler> collection) : base(collection)
         {
+            m_invoke = new List<EventFunctionHandler>(collection.Count);
         }
 
         protected override void OnInvoke()
         {
-            foreach (EventFunctionHandler handler in Collection)
-            {
-                m_invoke.Add(handler);
-            }
+            m_invoke.AddRange(Collection);
 
-            foreach (EventFunctionHandler handler in m_invoke)
+            try
             {
-                handler.Invoke();
+                for (int i = 0; i < m_invoke.Count; i++)
+                {
+                    m_invoke[i].Invoke();
+                }
             }
-
-            m_invoke.Clear();
+            finally
+            {
+                m_invoke.Clear();
+            }
         }
     }
 }
