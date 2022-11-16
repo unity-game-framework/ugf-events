@@ -2,8 +2,8 @@
   "name": "com.ugf.events",
   "displayName": "UGF.Events",
   "version": "1.0.0-preview.2",
-  "unity": "2021.1",
-  "apiCompatibility": ".NET Standard 2.0",
+  "unity": "2022.1",
+  "apiCompatibility": ".NET Standard 2.1",
   "description": "Events system implementation.",
   "author": {
     "name": "Unity Game Framework",
