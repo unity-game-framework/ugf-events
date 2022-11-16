@@ -4,29 +4,33 @@ namespace UGF.Events.Runtime
 {
     public class EventSet<TArguments> : EventCollection<HashSet<EventFunctionHandler<TArguments>>, TArguments>
     {
-        private readonly HashSet<EventFunctionHandler<TArguments>> m_invoke = new HashSet<EventFunctionHandler<TArguments>>();
+        private readonly List<EventFunctionHandler<TArguments>> m_invoke;
 
-        public EventSet() : this(new HashSet<EventFunctionHandler<TArguments>>())
+        public EventSet(int capacity = 4) : this(new HashSet<EventFunctionHandler<TArguments>>(capacity))
         {
+            m_invoke = new List<EventFunctionHandler<TArguments>>(capacity);
         }
 
         public EventSet(HashSet<EventFunctionHandler<TArguments>> collection) : base(collection)
         {
+            m_invoke = new List<EventFunctionHandler<TArguments>>(collection.Count);
         }
 
         protected override void OnInvoke(TArguments arguments)
         {
-            foreach (EventFunctionHandler<TArguments> handler in Collection)
-            {
-                m_invoke.Add(handler);
-            }
+            m_invoke.AddRange(Collection);
 
-            foreach (EventFunctionHandler<TArguments> handler in m_invoke)
+            try
             {
-                handler.Invoke(arguments);
+                for (int i = 0; i < m_invoke.Count; i++)
+                {
+                    m_invoke[i].Invoke(arguments);
+                }
             }
-
-            m_invoke.Clear();
+            finally
+            {
+                m_invoke.Clear();
+            }
         }
     }
 }
