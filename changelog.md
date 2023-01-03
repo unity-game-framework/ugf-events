@@ -5,11 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0](https://github.com/unity-game-framework/ugf-events/releases/tag/1.0.0) - 2023-01-03  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-events/milestone/4?closed=1)  
+    
+
+### Added
+
+- Add event dispatcher ([#11](https://github.com/unity-game-framework/ugf-events/issues/11))  
+    - Update dependencies: add `com.ugf.initialize` of `2.9.0` version.
+    - Update package _Unity_ version to `2022.2`.
+    - Add `EventDispatcher<T>` and related classes to manage events invocation and redirection.
+
+### Removed
+
+- Remove invoke from the interface ([#9](https://github.com/unity-game-framework/ugf-events/issues/9))  
+    - Update package _Unity_ version to `2022.1`.
+    - Update package _API Compatibility_ version to `.NET Standard 2.1`.
+    - Change `EventList`, `EventSet` and related classes of `Invoke()` method work.
+    - Remove `IEvent.Invoke()`, `IEvent<T>.Invoke()` and `IEventDynamic.Invoke()` methods.
+
 ## [1.0.0-preview.3](https://github.com/unity-game-framework/ugf-events/releases/tag/1.0.0-preview.3) - 2022-11-16  
 
 ### Release Notes
 
-- No release notes.
+- [Milestone](https://github.com/unity-game-framework/ugf-events/milestone/4?closed=1)  
+    
+### Remove
+
+- Remove invoke from the interface (#9)
+  - Update package _Unity_ version to `2022.1`.
+  - Update package _API Compatibility_ version to `.NET Standard 2.1`.
+  - Change `EventList`, `EventSet` and related classes of `Invoke()` method work.
+  - Remove `IEvent.Invoke()`, `IEvent<T>.Invoke()` and `IEventDynamic.Invoke()` methods.
 
 ## [1.0.0-preview.2](https://github.com/unity-game-framework/ugf-events/releases/tag/1.0.0-preview.2) - 2021-10-06  
 

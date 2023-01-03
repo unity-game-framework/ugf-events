@@ -1,7 +1,7 @@
 {
   "name": "com.ugf.events",
   "displayName": "UGF.Events",
-  "version": "1.0.0-preview.3",
+  "version": "1.0.0",
   "unity": "2022.2",
   "apiCompatibility": ".NET Standard 2.1",
   "description": "Events system implementation.",
