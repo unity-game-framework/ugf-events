@@ -27,5 +27,12 @@ namespace UGF.Events.Runtime
 
             return dispatcher.Children.Create(new EventDispatcherRedirection<T>(source, dispatcher, handler));
         }
+
+        public static EventDispatcherRedirection<T1, T0> AddRedirection<T0, T1>(this EventDispatcher<T0> dispatcher, IEventDispatcher<T1> source, EventDispatcherRedirectArgumentsHandler<T1, T0> handler)
+        {
+            if (dispatcher == null) throw new ArgumentNullException(nameof(dispatcher));
+
+            return dispatcher.Children.Create(new EventDispatcherRedirection<T1, T0>(source, dispatcher, handler));
+        }
     }
 }
