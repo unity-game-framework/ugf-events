@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0](https://github.com/unity-game-framework/ugf-events/releases/tag/1.1.0) - 2023-01-04  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-events/milestone/5?closed=1)  
+    null
+
+### Added
+
+- Add dispatcher redirection with different arguments ([#13](https://github.com/unity-game-framework/ugf-events/issues/13))  
+    - Add `EventDispatcherRedirection<T, T>` generic class as redirection implementation with ability to convert arguments.
+
 ## [1.0.0](https://github.com/unity-game-framework/ugf-events/releases/tag/1.0.0) - 2023-01-03  
 
 ### Release Notes
@@ -19,19 +31,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Update package _Unity_ version to `2022.2`.
     - Add `EventDispatcher<T>` and related classes to manage events invocation and redirection.
 
-### Removed
-
-- Remove invoke from the interface ([#9](https://github.com/unity-game-framework/ugf-events/issues/9))  
-    - Update package _Unity_ version to `2022.1`.
-    - Update package _API Compatibility_ version to `.NET Standard 2.1`.
-    - Change `EventList`, `EventSet` and related classes of `Invoke()` method work.
-    - Remove `IEvent.Invoke()`, `IEvent<T>.Invoke()` and `IEventDynamic.Invoke()` methods.
-
 ## [1.0.0-preview.3](https://github.com/unity-game-framework/ugf-events/releases/tag/1.0.0-preview.3) - 2022-11-16  
 
 ### Release Notes
 
-- [Milestone](https://github.com/unity-game-framework/ugf-events/milestone/4?closed=1)  
+- [Milestone](https://github.com/unity-game-framework/ugf-events/milestone/6?closed=1)  
     
 ### Remove
 
