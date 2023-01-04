@@ -2,7 +2,8 @@
     "name": "UGF.Events.Runtime.Tests",
     "rootNamespace": "",
     "references": [
-        "GUID:f25d3900f4c68b34291d01e7c726f004"
+        "GUID:f25d3900f4c68b34291d01e7c726f004",
+        "GUID:d067af32d09350a4bb33960432735e4d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
