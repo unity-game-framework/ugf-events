@@ -3,13 +3,13 @@ using UGF.Initialize.Runtime;
 
 namespace UGF.Events.Runtime
 {
-    public class EventDispatcherRedirection<TArguments> : Initializable
+    public class EventDispatcherRedirection<TSourceArguments, TTargetArguments> : Initializable
     {
-        public IEventDispatcher<TArguments> Source { get; }
-        public IEventDispatcher<TArguments> Target { get; }
-        public EventDispatcherRedirectArgumentsHandler<TArguments> Handler { get; }
+        public IEventDispatcher<TSourceArguments> Source { get; }
+        public IEventDispatcher<TTargetArguments> Target { get; }
+        public EventDispatcherRedirectArgumentsHandler<TSourceArguments, TTargetArguments> Handler { get; }
 
-        public EventDispatcherRedirection(IEventDispatcher<TArguments> source, IEventDispatcher<TArguments> target, EventDispatcherRedirectArgumentsHandler<TArguments> handler)
+        public EventDispatcherRedirection(IEventDispatcher<TSourceArguments> source, IEventDispatcher<TTargetArguments> target, EventDispatcherRedirectArgumentsHandler<TSourceArguments, TTargetArguments> handler)
         {
             Source = source ?? throw new ArgumentNullException(nameof(source));
             Target = target ?? throw new ArgumentNullException(nameof(target));
@@ -30,7 +30,7 @@ namespace UGF.Events.Runtime
             Source.Invoked -= OnInvoked;
         }
 
-        private void OnInvoked(IEventDispatcher<TArguments> dispatcher, IEventDispatcherInvokeHandler handler, TArguments arguments)
+        private void OnInvoked(IEventDispatcher<TSourceArguments> dispatcher, IEventDispatcherInvokeHandler handler, TSourceArguments arguments)
         {
             Target.Invoke(handler, Handler.Invoke(Source, Target, arguments));
         }
