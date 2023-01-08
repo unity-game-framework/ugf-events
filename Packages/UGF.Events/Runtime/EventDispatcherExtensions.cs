@@ -21,13 +21,6 @@ namespace UGF.Events.Runtime
             yield return dispatcher.Invoke(arguments).WaitRoutine();
         }
 
-        public static EventDispatcherRedirection<T> AddRedirection<T>(this EventDispatcher<T> dispatcher, IEventDispatcher<T> source, EventDispatcherRedirectArgumentsHandler<T> handler)
-        {
-            if (dispatcher == null) throw new ArgumentNullException(nameof(dispatcher));
-
-            return dispatcher.Children.Create(new EventDispatcherRedirection<T>(source, dispatcher, handler));
-        }
-
         public static EventDispatcherRedirection<T1, T0> AddRedirection<T0, T1>(this EventDispatcher<T0> dispatcher, IEventDispatcher<T1> source, EventDispatcherRedirectArgumentsHandler<T1, T0> handler)
         {
             if (dispatcher == null) throw new ArgumentNullException(nameof(dispatcher));

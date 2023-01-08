@@ -1,4 +1,4 @@
 ﻿namespace UGF.Events.Runtime
 {
-    public delegate TArguments EventDispatcherRedirectArgumentsHandler<TArguments>(IEventDispatcher<TArguments> source, IEventDispatcher<TArguments> target, TArguments arguments);
+    public delegate TTargetArguments EventDispatcherRedirectArgumentsHandler<TSourceArguments, TTargetArguments>(IEventDispatcher<TSourceArguments> source, IEventDispatcher<TTargetArguments> target, TSourceArguments arguments);
 }
