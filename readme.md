@@ -4,7 +4,7 @@ UGF.Events
 
 ## Information
 
-- **Version**: `1.1.0`
+- **Version**: `2.0.0-preview`
 - **Unity**: `2022.2`
 - **API Compatibility Level**: `.NET Standard 2.1`
 

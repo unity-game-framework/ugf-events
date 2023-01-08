@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-preview](https://github.com/unity-game-framework/ugf-events/releases/tag/2.0.0-preview) - 2023-01-08  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-events/milestone/7?closed=1)  
+    
+
+### Added
+
+- Add event arguments interface ([#15](https://github.com/unity-game-framework/ugf-events/issues/15))  
+    - Add `IEventArguments` interface.
+    - Change `EventArguments` class to implement `IEventArguments` interface.
+
+### Removed
+
+- Remove EventDispatcherRedirection with single generic argument ([#16](https://github.com/unity-game-framework/ugf-events/issues/16))  
+    - Remove `EventDispatcherRedirection<T>` and related classes, use `EventDispatcherRedirection<T, T>` class instead.
+
 ## [1.1.0](https://github.com/unity-game-framework/ugf-events/releases/tag/1.1.0) - 2023-01-04  
 
 ### Release Notes
